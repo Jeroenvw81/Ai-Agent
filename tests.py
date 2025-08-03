@@ -1,21 +1,17 @@
-from functions.get_file_content import get_file_content
+from functions.write_file import write_file
 
 def main():
 
-    result = get_file_content("calculator", "lorem.txt")
-    print(f"Result for 'lorem.txt' directory:\n{result}")
+    result = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
+    print(f"Result for 'lorem.txt':\n{result}")
 
-    #result = get_file_content("calculator", "main.py")
-    #print(f"Result for 'main.py' directory:\n{result}")
+    result = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
+    print(f"Result for 'morelorem.txt': \n{result}")
 
-    #result = get_file_content("calculator", "pkg/calculator.py")
-    #print(f"Result for 'calculator.py' directory:\n{result}")
+    result = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
+    print(f"Result for 'tmp.txt': \n{result}")
+
     
-    #result = get_file_content("calculator", "/bin/cat")
-    #print(f"Result for '/bin/cat' directory:\n{result}")
-
-    #result = get_file_content("calculator", "pkg/does_not_exist.py")
-    #print(f"Result for 'pkg/does_not_exit.py' directory:\n{result}")
 
 
 if __name__ == "__main__":
