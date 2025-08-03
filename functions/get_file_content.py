@@ -14,7 +14,7 @@ def get_file_content(working_directory, file_path):
         with open(abs_target_file_path, "r") as text:
             file_content_string = text.read(CHAR_LIMIT)
             if len(file_content_string) == CHAR_LIMIT:
-                return file_content_string + f'[...File: "{file_path}" truncated at {CHAR_LIMIT} characters]'
+                file_content_string += f'[...File: "{file_path}" truncated at {CHAR_LIMIT} characters]'
             return file_content_string
     except Exception as e:
         return f"Error reading file: {str(e)}"
