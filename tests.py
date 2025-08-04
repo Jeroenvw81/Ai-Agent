@@ -16,6 +16,9 @@ def main():
 
     result = run_python_file("calculator", "nonexistent.py")
     print(f"Result for 'nonexistent.py':\n{result}")
-    
+
+    result = run_python_file("calculator", "empty.py")
+    print(f"Result for 'empty.py': {result}")
+
 if __name__ == "__main__":
     main()
