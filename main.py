@@ -3,7 +3,7 @@ import sys
 from dotenv import load_dotenv      #imports the dotenv function
 from google import genai
 from google.genai import types      #the way genai handles data
-
+from prompts import system_prompt
 
 def main():
     load_dotenv()       # This reads the .env file and loads variables into the environment
@@ -26,10 +26,11 @@ def main():
 
 def generate_content(client, messages, user_prompt, verbose):
     if verbose:
-         print(f"User prompt: {user_prompt}\n")
+        print(f"User prompt: {user_prompt}\n")
     response = client.models.generate_content(
         model = "gemini-2.0-flash-001",
         contents = messages,
+        config=types.GenerateContentConfig(system_instruction=system_prompt),
     )
     if verbose:
         print("Prompt tokens:", response.usage_metadata.prompt_token_count)
